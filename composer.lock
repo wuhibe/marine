@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe33f98a750b8c5a51b30c78bd3fab21",
+    "content-hash": "cb920a0cef199cb51d12681dd971f12d",
     "packages": [
         {
             "name": "brick/math",
@@ -6098,6 +6098,57 @@
                 }
             ],
             "time": "2023-03-08T13:26:56+00:00"
+        },
+        {
+            "name": "niraj/crudstarter",
+            "version": "5.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NirajBasnyat/crudstarter.git",
+                "reference": "b54a7d1c22b9f96fa8720c24cd84ffbf01c40331"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NirajBasnyat/crudstarter/zipball/b54a7d1c22b9f96fa8720c24cd84ffbf01c40331",
+                "reference": "b54a7d1c22b9f96fa8720c24cd84ffbf01c40331",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Niraj\\CrudStarter\\CrudStarterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Niraj\\CrudStarter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Niraj Basnet",
+                    "email": "badassbasnet@gmail.com"
+                }
+            ],
+            "description": "Basic Package that automates the tedious CRUD and API generation process.",
+            "keywords": [
+                "API generator",
+                "crud",
+                "crud generator",
+                "laravel",
+                "laravel crud generator"
+            ],
+            "support": {
+                "issues": "https://github.com/NirajBasnyat/crudstarter/issues",
+                "source": "https://github.com/NirajBasnyat/crudstarter/tree/5.4.1"
+            },
+            "time": "2023-02-28T14:31:30+00:00"
         },
         {
             "name": "nunomaduro/collision",
