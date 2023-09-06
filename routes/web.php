@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('dashboard');
+});
 
 /*authentication*/
 Route::group([], function () {
@@ -25,3 +26,6 @@ Route::group([], function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 });
 /*authentication*/
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});

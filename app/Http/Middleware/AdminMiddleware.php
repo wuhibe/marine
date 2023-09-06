@@ -19,11 +19,11 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if ($request->path() == '/') {
-            return redirect()->route('auth.login');
+            return redirect()->route('login');
         }
         if (Auth::guard('admin')->check()) {
             return $next($request);
         }
-        return redirect()->route('auth.login');
+        return redirect()->route('login');
     }
 }
