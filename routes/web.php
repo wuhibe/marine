@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*authentication*/
 Route::group([], function () {
@@ -27,5 +24,8 @@ Route::group([], function () {
 });
 /*authentication*/
 Route::group(['middleware' => ['admin']], function () {
+    Route::get('/', function () {
+        return redirect('dashboard');
+    });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });

@@ -1,4 +1,4 @@
-<nav class="navbar pt-2 pb-2 fixed-top bg-white" style="border-bottom: solid 1px #3953a4">
+<nav class="navbar py-2 fixed-top bg-white" style="border-bottom: solid 1px #3953a455">
     <div class="flex justify-start">
         <img style="width: 60px; height: 60px;" src="{{asset('img/logo.png')}}" alt="Logo">
         <h3 class="text-bolder d-inline-block">Marine Guest House</h3>
