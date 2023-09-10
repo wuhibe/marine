@@ -16,15 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt('password'),
-            'user_type' => 'admin',
-            'phone_number' => '1234567890',
-            'avatar' => 'default.png',
-            'status' => 'active',
-            'last_login' => now()
-        ]);
+        \App\Models\Room::factory(10)->create();
     }
 }

@@ -1,26 +1,42 @@
-<nav
+<aside
     id="sidebar"
-    class="col-md-3 col-lg-2 d-md-block sidebar"
-    style="background: #3954a4dd; padding-top: 90px; padding-right: 30px"
+    class="col-md-3 col-lg-2 d-md-block"
+    style="background: #3954a4dd; height:100%"
 >
     <div class="position-sticky">
         <ul class="nav flex-column">
             <!-- Dashboards -->
-            <li class="pt-4 border-bottom {{ Request::is('dashboard*') ? 'border-top border-light' : 'border-dark' }}">
+            <li class="pt-4 border-bottom {{ Request::is('dashboard*') ? 'border-light' : 'border-dark' }}">
                 <a
-                    class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around align-items-center"
+                    class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around"
                     href="{{ route('dashboard') }}"
                     title="Dashboard"
                 >
-                    <i class="fas fa-home nav-icon h5"></i>
+                    <i class="fas fa-home nav-icon"></i>
                     <span
-                        class="navbar-vertical-aside-mini-mode-hidden-elements h5 text-right"
+                        class="navbar-vertical-aside-mini-mode-hidden-elements"
                     >
                         Dashboard
                     </span>
                 </a>
             </li>
             <!-- End Dashboards -->
+            <!-- Rooms -->
+            <li class="pt-4 border-bottom {{ Request::is('rooms*') ? 'border-light' : 'border-dark' }}">
+                <a
+                    class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around"
+                    href="{{ route('rooms.index') }}"
+                    title="Rooms"
+                >
+                    <i class="fas fa-box nav-icon"></i>
+                    <span
+                        class="navbar-vertical-aside-mini-mode-hidden-elements"
+                    >
+                        Rooms
+                    </span>
+                </a>
+            </li>
+            <!-- End Rooms -->
         </ul>
     </div>
-</nav>
+</aside>
