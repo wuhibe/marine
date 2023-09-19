@@ -13,7 +13,6 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <h6 class="dropdown-header text-dark">{{auth('admin')->user()->name}}</h6>
-            <a class="dropdown-item text-muted" href="#">Edit Profile</a>
             <a class="dropdown-item text-muted" href="{{route('logout')}}">Logout</a>
         </div>
     </div>

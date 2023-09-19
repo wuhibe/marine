@@ -21,6 +21,7 @@
                 </a>
             </li>
             <!-- End Dashboards -->
+            @if(auth('admin')->user()->user_type == 'admin')
             <!-- Rooms -->
             <li class="pt-4 border-bottom {{ Request::is('rooms*') ? 'border-light' : 'border-dark' }}">
                 <a
@@ -37,6 +38,7 @@
                 </a>
             </li>
             <!-- End Rooms -->
+            @endif
         </ul>
     </div>
 </aside>
