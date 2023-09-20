@@ -29,7 +29,7 @@
                     href="{{ route('rooms.index') }}"
                     title="Rooms"
                 >
-                    <i class="fas fa-box nav-icon"></i>
+                    <i class="fas fa-bed nav-icon"></i>
                     <span
                         class="navbar-vertical-aside-mini-mode-hidden-elements"
                     >

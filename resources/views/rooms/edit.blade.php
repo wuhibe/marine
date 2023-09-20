@@ -3,6 +3,12 @@
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
+        <!-- back button -->
+        <div class="d-flex justify-content-start">
+            <a href="{{ route('rooms.index') }}" class=" mr-2 mb-2">
+                <i class="fas fa-chevron-left"></i> Back
+            </a>
+        </div>
         <div class="page-header d-flex justify-content-center">
             <div class="row align-items-end">
                 <div class="col-sm mb-2 mb-sm-0">
