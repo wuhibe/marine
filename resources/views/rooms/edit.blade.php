@@ -15,8 +15,9 @@
             <div class="col-sm-6 col-lg-6 mb-3 mb-lg-2">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('rooms.update', $room->id) }}" method="put">
+                        <form action="{{ route('rooms.update', $room->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
