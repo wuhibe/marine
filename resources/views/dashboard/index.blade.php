@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Revenue for the Past Day</h5>
-                        <p class="card-text">$ {{ $revenueDay }}</p>
+                        <p class="card-text">{{ $revenueDay }} Br.</p>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Revenue for the Past Week</h5>
-                        <p class="card-text">$ {{ $revenueWeek }}</p>
+                        <p class="card-text">{{ $revenueWeek }} Br.</p>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Revenue for the Past Month</h5>
-                        <p class="card-text">$ {{ $revenueMonth }}</p>
+                        <p class="card-text">{{ $revenueMonth }} Br.</p>
                     </div>
                 </div>
             </div>

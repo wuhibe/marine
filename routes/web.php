@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
@@ -29,8 +30,9 @@ Route::group(['middleware' => ['admin']], function () {
         return redirect('dashboard');
     });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    
     Route::resource('/rooms', RoomController::class);
     Route::get('/rooms/availability/{id}/{availability}', [RoomController::class, 'availability'])->name('rooms.availability');
-
+    
+    Route::resource('/customers', CustomerController::class);
 });

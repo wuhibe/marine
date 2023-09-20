@@ -83,13 +83,13 @@
                                             </form>
                                         </td>
                                         <td>
-                                            <a class="btn btn-sm btn-white"
+                                            <a class="btn btn-sm btn-primary"
                                                 href="{{ route('rooms.edit', [$room->id]) }}"
                                                 title="Edit Room"><i
                                                     class="fas fa-edit"></i>
                                             </a>
                                             @if (auth('admin')->user()->user_type == 'admin')
-                                                <a class="btn btn-sm btn-white" href="javascript:"
+                                                <a class="btn btn-sm btn-danger" href="javascript:"
                                                     onclick="form_alert('room-{{ $room->id }}','Want to delete this room ?')"
                                                     title="Delete room"><i
                                                         class="fas fa-trash"></i>

@@ -39,6 +39,15 @@
             </li>
             <!-- End Rooms -->
             @endif
+            <!-- Customers -->
+            <li class="pt-4 border-bottom {{ Request::is('customers*') ? 'border-light' : 'border-dark' }}">
+                <a class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around" href="{{ route('customers.index') }}" title="Customers">
+                    <i class="fas fa-users nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements">Customers</span>
+                </a>
+            </li>
+            <!-- End Customers -->
+
         </ul>
     </div>
 </aside>
