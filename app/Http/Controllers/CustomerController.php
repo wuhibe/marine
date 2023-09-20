@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,12 +14,12 @@ class CustomerController extends Controller
         $search = $request->input('search');
         $customers = Customer::where(function ($query) use ($search) {
             $query->where('first_name', 'like', '%' . $search . '%')
-                  ->orWhere('last_name', 'like', '%' . $search . '%')
-                  ->orWhere('email', 'like', '%' . $search . '%')
-                  ->orWhere('phone', 'like', '%' . $search . '%')
-                  ->orWhere('address', 'like', '%' . $search . '%');
+                ->orWhere('last_name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('phone', 'like', '%' . $search . '%')
+                ->orWhere('address', 'like', '%' . $search . '%');
         })->paginate(10);
-    
+
         return view('customers.index', compact('customers', 'search'));
     }
 
@@ -40,15 +41,26 @@ class CustomerController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatars');
-            $request->merge(['avatar' => $avatarPath]);
+            $path = Utility::uploadFile($request, 'avatar');
+            if ($path['flag'] == 1) {
+                $request->merge(['avatar' => $path['url']]);
+            } else {
+                return redirect()
+                    ->route('customers.index')
+                    ->with('error', __($path['msg']));
+            }
         }
 
         if ($request->hasFile('id_photo')) {
-            $idPhotoPath = $request->file('id_photo')->store('id_photos');
-            $request->merge(['id_photo' => $idPhotoPath]);
+            $path = Utility::uploadFile($request, 'id_photo');
+            if ($path['flag'] == 1) {
+                $request->merge(['id_photo' => $path['url']]);
+            } else {
+                return redirect()
+                    ->route('customers.index')
+                    ->with('error', __($path['msg']));
+            }
         }
-
         Customer::create($request->all());
 
         return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
@@ -77,19 +89,25 @@ class CustomerController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
-            if ($customer->avatar) {
-                Storage::disk('public')->delete($customer->avatar);
+            $path = Utility::uploadFile($request, 'avatar');
+            if ($path['flag'] == 1) {
+                $request->merge(['avatar' => $path['url']]);
+            } else {
+                return redirect()
+                    ->route('customers.index')
+                    ->with('error', __($path['msg']));
             }
-            $avatarPath = $request->file('avatar')->store('avatars');
-            $request->merge(['avatar' => $avatarPath]);
         }
 
         if ($request->hasFile('id_photo')) {
-            if ($customer->id_photo) {
-                Storage::disk('public')->delete($customer->id_photo);
+            $path = Utility::uploadFile($request, 'id_photo');
+            if ($path['flag'] == 1) {
+                $request->merge(['id_photo' => $path['url']]);
+            } else {
+                return redirect()
+                    ->route('customers.index')
+                    ->with('error', __($path['msg']));
             }
-            $idPhotoPath = $request->file('id_photo')->store('id_photos');
-            $request->merge(['id_photo' => $idPhotoPath]);
         }
 
         $customer->update($request->all());
