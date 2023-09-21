@@ -21,6 +21,22 @@
                 </a>
             </li>
             <!-- End Dashboards -->
+            <!-- Bookings -->
+            <li class="pt-4 border-bottom {{ Request::is('bookings*') ? 'border-light' : 'border-dark' }}">
+                <a class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around" href="{{ route('bookings.index') }}" title="Bookings">
+                    <i class="fas fa-calendar nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements">Bookings</span>
+                </a>
+            </li>
+            <!-- End Bookings -->
+            <!-- Customers -->
+            <li class="pt-4 border-bottom {{ Request::is('customers*') ? 'border-light' : 'border-dark' }}">
+                <a class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around" href="{{ route('customers.index') }}" title="Customers">
+                    <i class="fas fa-users nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements">Customers</span>
+                </a>
+            </li>
+            <!-- End Customers -->
             @if(auth('admin')->user()->user_type == 'admin')
             <!-- Rooms -->
             <li class="pt-4 border-bottom {{ Request::is('rooms*') ? 'border-light' : 'border-dark' }}">
@@ -39,14 +55,6 @@
             </li>
             <!-- End Rooms -->
             @endif
-            <!-- Customers -->
-            <li class="pt-4 border-bottom {{ Request::is('customers*') ? 'border-light' : 'border-dark' }}">
-                <a class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around" href="{{ route('customers.index') }}" title="Customers">
-                    <i class="fas fa-users nav-icon"></i>
-                    <span class="navbar-vertical-aside-mini-mode-hidden-elements">Customers</span>
-                </a>
-            </li>
-            <!-- End Customers -->
 
         </ul>
     </div>

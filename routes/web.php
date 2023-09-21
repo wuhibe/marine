@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
@@ -25,6 +26,7 @@ Route::group([], function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 });
 /*authentication*/
+
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/', function () {
         return redirect('dashboard');
@@ -35,4 +37,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/rooms/availability/{id}/{availability}', [RoomController::class, 'availability'])->name('rooms.availability');
     
     Route::resource('/customers', CustomerController::class);
+
+    Route::resource('/bookings', BookingController::class);
 });

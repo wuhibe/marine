@@ -18,7 +18,7 @@ class CustomerController extends Controller
                 ->orWhere('email', 'like', '%' . $search . '%')
                 ->orWhere('phone', 'like', '%' . $search . '%')
                 ->orWhere('address', 'like', '%' . $search . '%');
-        })->paginate(10);
+        })->paginate(6);
 
         return view('customers.index', compact('customers', 'search'));
     }
@@ -61,6 +61,7 @@ class CustomerController extends Controller
                     ->with('error', __($path['msg']));
             }
         }
+        $request->merge(['creator_id' => auth('admin')->user()->id]);
         Customer::create($request->all());
 
         return redirect()->route('customers.index')->with('success', 'Customer created successfully.');

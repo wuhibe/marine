@@ -17,6 +17,7 @@ class Customer extends Model
         'address',
         'avatar',
         'id_photo',
+        'creator_id',
     ];
 
     public function reservations()
