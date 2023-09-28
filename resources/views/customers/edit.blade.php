@@ -49,9 +49,9 @@
                                     <div class="form-group">
                                         <label class="input-label">Avatar</label>
                                         <div class="d-flex flex-row">
-                                            <input type="file" name="avatar" class="form-control-file">
+                                            <input type="file" name="avatar_img" class="form-control-file">
                                             @if ($customer->avatar)
-                                                <img src="{{ asset('storage/' . $customer->avatar) }}" alt="Avatar"
+                                                <img src="{{ ($customer->avatar) }}" alt="Avatar"
                                                     class="avatar">
                                             @else
                                                 No Avatar
@@ -61,10 +61,10 @@
                                     <div class="form-group">
                                         <label class="input-label">ID Photo</label>
                                         <div class="d-flex flex-row">
-                                            <input type="file" name="id_photo" class="form-control-file">
+                                            <input type="file" name="id_photo_img" class="form-control-file">
                                             @if ($customer->id_photo)
-                                                <img src="{{ asset('storage/' . $customer->id_photo) }}" alt="ID Photo"
-                                                    class="id-photo">
+                                                <img src="{{ ($customer->id_photo) }}" alt="ID Photo"
+                                                    class="avatar">
                                             @else
                                                 No ID Photo
                                             @endif

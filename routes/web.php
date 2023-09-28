@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,4 +40,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::resource('/customers', CustomerController::class);
 
     Route::resource('/bookings', BookingController::class);
+
+    Route::resource('/reservations', ReservationController::class);
 });

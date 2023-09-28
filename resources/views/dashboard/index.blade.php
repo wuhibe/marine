@@ -41,14 +41,16 @@
                         <th>Customer Name</th>
                         <th>Check-In Date</th>
                         <th>Check-Out Date</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($upcomingReservations as $reservation)
                         <tr>
-                            <td>{{ $reservation->customer->name }}</td>
-                            <td>{{ $reservation->check_in_date->format('Y-m-d') }}</td>
-                            <td>{{ $reservation->check_out_date->format('Y-m-d') }}</td>
+                            <td>{{ $reservation->customer->fullName() }}</td>
+                            <td>{{ \Carbon\Carbon::parse($reservation->check_in_date)->format('Y-m-d') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($reservation->check_out_date)->format('Y-m-d') }}</td>
+                            <td>{{ $reservation->total_price }} Br.</td>
                         </tr>
                     @endforeach
                 </tbody>

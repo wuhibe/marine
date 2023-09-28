@@ -2,31 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
-class Utility extends Model
+class Utility
 {
-    public static function uploadFile($request, $key_name, $storage_path = 'app/public/')
+    public static function uploadFile(UploadedFile $file, $storage_disk = 'public', $storage_path = 'uploads')
     {
-        if ($request->hasFile($key_name)) {
-            $filename = time() . '_' . $request->file($key_name)->getClientOriginalName();
-            $request->file($key_name)->move(storage_path($storage_path), $filename);
-            $url = asset($storage_path . $filename);
+        // Validate that the file is an image (you can adjust the MIME types as needed)
+        if ($file->isValid() && $file->getMimeType() && Str::startsWith($file->getMimeType(), 'image')) {
+            // Generate a unique file name
+            $fileName = Str::random(20) . '.' . $file->getClientOriginalExtension();
 
-            $url = str_replace('app/public/', 'storage/', $url);
+            // Store the file in the specified disk and path
+            $file->storeAs($storage_path, $fileName, $storage_disk);
 
-            $response = [
+            // Generate a public URL to access the file
+            $url = Storage::disk($storage_disk)->url($storage_path . '/' . $fileName);
+
+            return [
                 'flag' => 1,
                 'msg' => 'File uploaded successfully',
                 'url' => $url,
             ];
         } else {
-            $response = [
+            return [
                 'flag' => 0,
-                'msg' => 'No file found in the request',
+                'msg' => 'Invalid or unsupported file format',
             ];
         }
-
-        return $response;
     }
 }

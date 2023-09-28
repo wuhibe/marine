@@ -5,15 +5,15 @@
         <div class="row align-items-center">
             <div class="col-sm">
                 <h1 class="page-header-title">
-                    <i class="fas fa-list"></i> Bookings List
+                    <i class="fas fa-list"></i> Reservations List
                 </h1>
             </div>
             <div class="col-sm-auto">
                 <a
                     class="btn btn-primary"
-                    href="{{ route('bookings.create') }}"
+                    href="{{ route('reservations.create') }}"
                 >
-                    <i class="fas fa-plus"></i> Add Booking
+                    <i class="fas fa-plus"></i> Add Reservation
                 </a>
             </div>
         </div>
@@ -24,10 +24,10 @@
             <div class="card">
                 <div class="card-header justify-content-between">
                     <h5>
-                        Bookings List<span
+                        Reservations List<span
                             class="badge badge-soft-dark ml-4"
                             id="itemCount"
-                            >{{ $bookings->total() }}</span
+                            >{{ $reservations->total() }}</span
                         >
                     </h5>
                 </div>
@@ -44,32 +44,34 @@
                                 <th>Check-in Date</th>
                                 <th>Check-out Date</th>
                                 <th>Total Price</th>
-                                <th>Payment Method</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($bookings as $booking)
+                            @foreach ($reservations as $reservation)
                             <tr>
-                                <td>{{ $booking->id }}</td>
-                                <td>{{ $booking->room->room_number }}</td>
+                                <td>{{ $reservation->id }}</td>
+                                <td>{{ $reservation->room->room_number }}</td>
                                 <td>
-                                    {{ $booking->customer->first_name }}
-                                    {{ $booking->customer->last_name }}
+                                    {{ $reservation->customer->first_name }}
+                                    {{ $reservation->customer->last_name }}
                                 </td>
-                                <td>{{ $booking->check_in_date }}</td>
-                                <td>{{ $booking->check_out_date }}</td>
-                                <td>{{ $booking->total_price }}</td>
-                                <td>{{ $booking->payment_method }}</td>
+                                <td>{{ $reservation->check_in_date }}</td>
+                                <td>{{ $reservation->check_out_date }}</td>
+                                <td>{{ $reservation->total_price }}</td>
                                 <td>
+                                @if($reservation->status == 'PENDING' && $reservation->check_in_date > date('Y-m-d'))
                                     <a
-                                    href="{{ route('bookings.show', $booking->id) }}"
-                                    class="btn btn-warning btn-sm" title="View Booking"><i class="fas fa-eye"></i></a>
-                                    @if ($booking->check_in_date >= now()->toDateString())
+                                        href="{{ route('reservations.show', $reservation->id) }}"
+                                        class="btn btn-warning btn-sm"
+                                        ><i class="fas fa-eye"></i></a
+                                    >
                                     <a
-                                        href="{{ route('bookings.edit', $booking->id) }}"
-                                        class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                    @endif
+                                        href="{{ route('reservations.edit', $reservation->id) }}"
+                                        class="btn btn-primary btn-sm"
+                                        ><i class="fas fa-edit"></i></a
+                                    >
+                                @endif
                                 </td>
                             </tr>
                             @endforeach
@@ -79,7 +81,7 @@
                     <div class="page-area">
                         <table>
                             <tfoot>
-                                {!! $bookings->withQueryString()->links()
+                                {!! $reservations->withQueryString()->links()
                                 !!}
                             </tfoot>
                         </table>

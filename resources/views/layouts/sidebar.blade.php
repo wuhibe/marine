@@ -21,6 +21,14 @@
                 </a>
             </li>
             <!-- End Dashboards -->
+            <!-- Reservations -->
+            <li class="pt-4 border-bottom {{ Request::is('reservations*') ? 'border-light' : 'border-dark' }}">
+                <a class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around" href="{{ route('reservations.index') }}" title="Reservations">
+                    <i class="fas fa-book nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements">Reservations</span>
+                </a>
+            </li>
+            <!-- End Reservations -->
             <!-- Bookings -->
             <li class="pt-4 border-bottom {{ Request::is('bookings*') ? 'border-light' : 'border-dark' }}">
                 <a class="js-navbar-vertical-aside-menu-link nav-link text-white d-flex justify-content-around" href="{{ route('bookings.index') }}" title="Bookings">

@@ -47,11 +47,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="input-label">Avatar</label>
-                                        <input type="file" name="avatar" class="form-control-file">
+                                        <input type="file" name="avatar_img" class="form-control-file">
                                     </div>
                                     <div class="form-group">
                                         <label class="input-label">ID Photo</label>
-                                        <input type="file" name="id_photo" class="form-control-file">
+                                        <input type="file" name="id_photo_img" class="form-control-file">
                                     </div>
                                 </div>
                             </div>

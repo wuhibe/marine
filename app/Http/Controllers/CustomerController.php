@@ -36,13 +36,13 @@ class CustomerController extends Controller
             'email' => 'required|email|unique:customers,email',
             'phone' => 'required|string',
             'address' => 'required|string',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'id_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'avatar_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'id_photo_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('avatar')) {
-            $path = Utility::uploadFile($request, 'avatar');
-            if ($path['flag'] == 1) {
+        if ($request->hasFile('avatar_img')) {
+            $path = Utility::uploadFile($request->file('avatar_img'));
+            if ($path['flag'] == 1) {                
                 $request->merge(['avatar' => $path['url']]);
             } else {
                 return redirect()
@@ -51,8 +51,8 @@ class CustomerController extends Controller
             }
         }
 
-        if ($request->hasFile('id_photo')) {
-            $path = Utility::uploadFile($request, 'id_photo');
+        if ($request->hasFile('id_photo_img')) {
+            $path = Utility::uploadFile($request->file('id_photo_img'));
             if ($path['flag'] == 1) {
                 $request->merge(['id_photo' => $path['url']]);
             } else {
@@ -85,12 +85,12 @@ class CustomerController extends Controller
             'email' => 'required|email|unique:customers,email,' . $customer->id,
             'phone' => 'required|string',
             'address' => 'required|string',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'id_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'avatar_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'id_photo_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('avatar')) {
-            $path = Utility::uploadFile($request, 'avatar');
+        if ($request->hasFile('avatar_img')) {
+            $path = Utility::uploadFile($request->file('avatar_img'));
             if ($path['flag'] == 1) {
                 $request->merge(['avatar' => $path['url']]);
             } else {
@@ -100,8 +100,8 @@ class CustomerController extends Controller
             }
         }
 
-        if ($request->hasFile('id_photo')) {
-            $path = Utility::uploadFile($request, 'id_photo');
+        if ($request->hasFile('id_photo_img')) {
+            $path = Utility::uploadFile($request->file('id_photo_img'));
             if ($path['flag'] == 1) {
                 $request->merge(['id_photo' => $path['url']]);
             } else {

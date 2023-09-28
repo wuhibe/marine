@@ -65,16 +65,18 @@
                                 <td>{{ $customer->address }}</td>
                                 <td>
                                     @if ($customer->avatar)
-                                    <img src="{{ asset('storage/' . $customer->avatar) }}" alt="Avatar"
-                                        class="avatar">
+                                    <a href="#" class="image-link" data-toggle="modal" data-target="#imageModal" data-image="{{ $customer->avatar }}">
+                                            <img src="{{ ($customer->avatar) }}" alt="Avatar" class="avatar">
+                                        </a>
                                     @else
                                     No Avatar
                                     @endif
                                 </td>
                                 <td>
                                     @if ($customer->id_photo)
-                                    <img src="{{ asset('storage/' . $customer->id_photo) }}" alt="ID Photo"
-                                        class="id-photo">
+                                    <a href="#" class="image-link" data-toggle="modal" data-target="#imageModal" data-image="{{ $customer->id_photo }}">
+                                            <img src="{{ ($customer->id_photo) }}" alt="ID Photo" class="avatar">
+                                        </a>
                                     @else
                                     No ID Photo
                                     @endif
@@ -118,4 +120,34 @@
         <!-- End Table -->
     </div>
 </div>
+
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="imageModal" aria-labelledby="imageModalLabel">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border border-2">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="Image" class="img-fluid" id="imageComp">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.image-link').click(function () {
+            var imageUrl = $(this).data('image');
+            $('#imageComp').attr('src', imageUrl);
+        });
+    });
+</script>
+
 @endsection
