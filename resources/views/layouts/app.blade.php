@@ -18,7 +18,6 @@
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     </head>
     <body style="height: 100vh; width: 100vw; display: flex; flex-direction: column;">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         @include('layouts.header')
         <div style="flex-grow: 1; display: flex;">
             @include('layouts.sidebar')
@@ -30,6 +29,35 @@
                 </div>
             </main>
         </div>
+
+        <!-- Image Preview Modal -->
+        <div class="modal fade" id="imageModal" aria-labelledby="imageModalLabel">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content border border-2">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" alt="Image" class="img-fluid" id="imageComp">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                $('.image-link').click(function () {
+                    const imageUrl = $(this).data('image');
+                    $('#imageComp').attr('src', imageUrl);
+                });
+            });
+        </script>
         <!-- Include Bootstrap JS and your custom JS scripts here -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
