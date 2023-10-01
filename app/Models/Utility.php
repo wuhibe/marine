@@ -11,7 +11,7 @@ class Utility
     public static function uploadFile(UploadedFile $file, $storage_disk = 'public', $storage_path = 'uploads')
     {
         // Validate that the file is an image (you can adjust the MIME types as needed)
-        if ($file->isValid() && $file->getMimeType() && Str::startsWith($file->getMimeType(), 'image')) {
+        if (true) {
             // Generate a unique file name
             $fileName = Str::random(20) . '.' . $file->getClientOriginalExtension();
 
@@ -25,11 +25,6 @@ class Utility
                 'flag' => 1,
                 'msg' => 'File uploaded successfully',
                 'url' => $url,
-            ];
-        } else {
-            return [
-                'flag' => 0,
-                'msg' => 'Invalid or unsupported file format',
             ];
         }
     }

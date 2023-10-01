@@ -38,8 +38,6 @@ class CustomerController extends Controller
             'email' => 'required|email|unique:customers,email',
             'phone' => 'required|string',
             'address' => 'required|string',
-            'avatar_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'id_photo_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('avatar_img')) {
@@ -87,8 +85,6 @@ class CustomerController extends Controller
             'email' => 'required|email|unique:customers,email,' . $customer->id,
             'phone' => 'required|string',
             'address' => 'required|string',
-            'avatar_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'id_photo_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('avatar_img')) {
