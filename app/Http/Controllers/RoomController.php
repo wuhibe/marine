@@ -26,7 +26,7 @@ class RoomController extends Controller
         $request->validate([
             'capacity' => 'required|numeric',
             'room_number' => 'required|unique:rooms,room_number',
-            'room_type' => 'required|in:standard,double,queen,king',
+            'room_type' => 'required|in:standard,double,family',
             'price_per_night' => 'required|numeric',
         ]);
 
@@ -49,7 +49,7 @@ class RoomController extends Controller
         $request->validate([
             'capacity' => 'required|numeric',
             'room_number' => 'required|unique:rooms,room_number,' . $room->id,
-            'room_type' => 'required|in:standard,double,queen,king',
+            'room_type' => 'required|in:standard,double,family',
             'price_per_night' => 'required|numeric',
         ]);
 

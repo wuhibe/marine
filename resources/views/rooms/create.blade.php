@@ -42,8 +42,7 @@
                                         <select name="room_type" class="form-control">
                                             <option value="standard">Standard</option>
                                             <option value="double">Double</option>
-                                            <option value="queen">Queen</option>
-                                            <option value="king">King</option>
+                                            <option value="family">Family</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
