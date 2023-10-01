@@ -50,6 +50,17 @@
             </div>
         </div>
         <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+        <script src="{{ asset('js/toastr.js') }}"></script>
+        @if ($errors->any())
+        <script>
+            @foreach ($errors->all() as $error)
+                toastr.error('{{ $error }}', Error, {
+                    CloseButton: true,
+                    ProgressBar: true
+                });
+            @endforeach
+        </script>
+        @endif
         <script>
             $(document).ready(function () {
                 $('.image-link').click(function () {

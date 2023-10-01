@@ -18,7 +18,9 @@ class CustomerController extends Controller
                 ->orWhere('email', 'like', '%' . $search . '%')
                 ->orWhere('phone', 'like', '%' . $search . '%')
                 ->orWhere('address', 'like', '%' . $search . '%');
-        })->paginate(6);
+        })
+        ->orderBy('first_name')
+        ->paginate(6);
 
         return view('customers.index', compact('customers', 'search'));
     }
@@ -37,7 +39,7 @@ class CustomerController extends Controller
             'phone' => 'required|string',
             'address' => 'required|string',
             'avatar_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'id_photo_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'id_photo_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('avatar_img')) {

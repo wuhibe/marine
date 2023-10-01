@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Reservation;
 
 class DashboardController extends Controller
 {
@@ -14,8 +15,9 @@ class DashboardController extends Controller
 
         $revenueMonth = $this->getRevenueForPeriod(now()->subMonth(), now());
 
-        $upcomingReservations = Booking::whereBetween('check_in_date', [now(), now()->addDays(30)])
-            ->orderBy('check_in_date', 'asc')
+        $upcomingReservations = Reservation::whereBetween('check_in_date', [now(), now()->addDays(30)])
+            ->leftJoin('customers', 'customers.id', 'reservations.customer_id')
+            ->orderBy('customers.first_name', 'asc')
             ->get();
 
         return view('dashboard.index', compact('revenueDay', 'revenueWeek', 'revenueMonth', 'upcomingReservations'));
