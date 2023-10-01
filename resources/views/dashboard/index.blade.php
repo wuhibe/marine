@@ -32,7 +32,9 @@
                 </div>
             </div>
         </div>
-
+        <div class="d-flex justify-content-end">
+            <a href="{{ route('dashboard.details') }}" class="ml-2 mb-2 mt-2">Show More Details</a>
+        </div>
         <div class="mt-4">
             <h2>Upcoming Reservations</h2>
             <table class="table">

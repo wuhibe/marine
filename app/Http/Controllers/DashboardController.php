@@ -21,9 +21,30 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('revenueDay', 'revenueWeek', 'revenueMonth', 'upcomingReservations'));
     }
 
+    public function revenueByRoom()
+    {
+        $revenueDay = $this->getRevenueByRoom(now()->subDay(), now());
+
+        $revenueWeek = $this->getRevenueByRoom(now()->subWeek(), now());
+
+        $revenueMonth = $this->getRevenueByRoom(now()->subMonth(), now());
+
+        return view('dashboard.details', compact('revenueDay', 'revenueWeek', 'revenueMonth'));
+    }
+
     private function getRevenueForPeriod($start, $end)
     {
         return Booking::whereBetween('created_at', [$start, $end])
             ->sum('total_price');
+    }
+
+    private function getRevenueByRoom($start, $end)
+    {
+        return Booking::whereBetween('bookings.created_at', [$start, $end])
+            ->leftjoin('rooms', 'bookings.room_id', 'rooms.id')
+            ->selectRaw('rooms.room_number, rooms.price_per_night, room_id, sum(total_price) as price')
+            ->groupBy('room_id')
+            ->orderBy('price', 'desc')
+            ->get()->toArray();
     }
 }

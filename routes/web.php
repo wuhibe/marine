@@ -33,6 +33,7 @@ Route::group(['middleware' => ['admin']], function () {
         return redirect('dashboard');
     });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/details', [DashboardController::class, 'revenueByRoom'])->name('dashboard.details');
     
     Route::resource('/rooms', RoomController::class);
     Route::get('/rooms/availability/{id}/{availability}', [RoomController::class, 'availability'])->name('rooms.availability');
