@@ -10,7 +10,8 @@
             <label for="room_id">Select Room</label>
             <select name="room_id" class="form-control">
                 @foreach ($rooms as $room)
-                <option value="{{ $room->id }}" {{ $booking->room_id == $room->id ? 'selected' : '' }}>{{ $room->room_number }}</option>
+                <option value="{{ $room->id }}" data="{{$room->price_per_night}}" type="{{$room->room_type}}"  {{ $booking->room_id == $room->id ? 'selected' : '' }}>
+                    {{ $room->room_number }}</option>
                 @endforeach
             </select>
         </div>

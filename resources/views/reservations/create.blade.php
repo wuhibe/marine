@@ -9,7 +9,7 @@
             <label for="room_id">Select Room</label>
             <select name="room_id" class="form-control">
                 @foreach ($rooms as $room)
-                <option value="{{ $room->id }}" data="{{$room->price_per_night}}">
+                <option value="{{ $room->id }}" data="{{$room->price_per_night}}" type="{{$room->room_type}}">
                         {{ " $room->capacity Bed(s)  -  No. $room->room_number  -  $room->room_type size  -  -  $room->price_per_night"}}</p>
                 </option>
                 @endforeach
@@ -42,6 +42,7 @@
 </div>
 
 
+
 <script>
     // Calculate total price based on selected dates and room price
     document.addEventListener('input', function (e) {
@@ -49,7 +50,9 @@
             calculateTotalPrice();
         }
     });
-    const checkInDate = new Date(document.querySelector('input[name="check_in_date"]').value);
+
+    function calculateTotalPrice() {
+        const checkInDate = new Date(document.querySelector('input[name="check_in_date"]').value);
         const checkOutDate = new Date(document.querySelector('input[name="check_out_date"]').value);
         const roomId = document.querySelector('select[name="room_id"]').value;
         const roomPrice = document.querySelector('select[name="room_id"]').selectedOptions[0].getAttribute('data');
@@ -89,7 +92,7 @@
             }
             document.querySelector('input[name="total_price"]').value = totalPrice;
         }
-    // Calculate total price on page load
+    }
     window.addEventListener('load', calculateTotalPrice);
 
 </script>
