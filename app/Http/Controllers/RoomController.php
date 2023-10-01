@@ -9,7 +9,10 @@ class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = Room::paginate(6);
+        if (auth('admin')->user()->user_type == 'admin')
+            $rooms = Room::paginate(6);
+        else
+            $rooms = Room::where('status', 'AVAILABLE')->paginate(6);
         return view('rooms.index', compact('rooms'));
     }
 

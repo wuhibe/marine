@@ -36,7 +36,9 @@
                                     <th style="max-width: 20%">Description</th>
                                     <th>Price</th>
                                     <th>Capacity</th>
+                                    @if(auth('admin')->user()->user_type == 'admin')
                                     <th>Availability</th>
+                                    @endif
                                     <th style="min-width: 8rem;">Action</th>
                                 </tr>
                             </thead>
@@ -66,6 +68,7 @@
                                                 {{ $room->capacity }}
                                             </span>
                                         </td>
+                                        @if (auth('admin')->user()->user_type == 'admin')
                                         <td>
                                             <label class="toggle-switch toggle-switch-sm"
                                                 for="stocksCheckbox{{ $room->id }}">
@@ -82,6 +85,7 @@
                                                 method="get" id="availability-{{ $room->id }}">
                                             </form>
                                         </td>
+                                        @endif
                                         <td>
                                             <a class="btn btn-sm btn-primary"
                                                 href="{{ route('rooms.edit', [$room->id]) }}"
