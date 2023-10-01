@@ -70,6 +70,17 @@
                                         href="{{ route('bookings.edit', $booking->id) }}"
                                         class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                     @endif
+                                    @if (auth('admin')->user()->user_type == 'admin')
+                                    <a class="btn btn-sm btn-danger" href="javascript:"
+                                        onclick="form_alert('reservation-{{ $reservation->id }}','Want to delete this reservation ?')"
+                                        title="Delete reservation"><i
+                                            class="fas fa-trash"></i>
+                                    </a>
+                                    <form action="{{ route('reservations.destroy', [$reservation->id]) }}"
+                                    method="post" id="reservation-{{ $reservation->id }}">
+                                    @csrf @method('delete')
+                                </form>
+                                @endif
                                 </td>
                             </tr>
                             @endforeach
