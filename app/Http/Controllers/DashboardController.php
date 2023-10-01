@@ -9,11 +9,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $revenueDay = $this->getRevenueForPeriod(now()->subDay(), now());
+        $revenueDay = $this->getRevenueForPeriod(now()->startOfDay(), now()->endOfDay());
 
-        $revenueWeek = $this->getRevenueForPeriod(now()->subWeek(), now());
+        $revenueWeek = $this->getRevenueForPeriod(now()->startOfWeek(), now()->endOfWeek());
 
-        $revenueMonth = $this->getRevenueForPeriod(now()->subMonth(), now());
+        $revenueMonth = $this->getRevenueForPeriod(now()->startOfMonth(), now()->endOfMonth());
 
         $upcomingReservations = Reservation::whereBetween('check_in_date', [now(), now()->addDays(30)])
             ->leftJoin('customers', 'customers.id', 'reservations.customer_id')
@@ -25,11 +25,11 @@ class DashboardController extends Controller
 
     public function revenueByRoom()
     {
-        $revenueDay = $this->getRevenueByRoom(now()->subDay(), now());
+        $revenueDay = $this->getRevenueByRoom(now()->startOfDay(), now()->endOfDay());
 
-        $revenueWeek = $this->getRevenueByRoom(now()->subWeek(), now());
+        $revenueWeek = $this->getRevenueByRoom(now()->startOfWeek(), now()->endOfWeek());
 
-        $revenueMonth = $this->getRevenueByRoom(now()->subMonth(), now());
+        $revenueMonth = $this->getRevenueByRoom(now()->startOfMonth(), now()->endOfMonth());
 
         return view('dashboard.details', compact('revenueDay', 'revenueWeek', 'revenueMonth'));
     }
