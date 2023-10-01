@@ -12,7 +12,7 @@ class RoomController extends Controller
         if (auth('admin')->user()->user_type == 'admin')
             $rooms = Room::paginate(6);
         else
-            $rooms = Room::where('status', 'AVAILABLE')->paginate(6);
+            $rooms = Room::where('availability', 'AVAILABLE')->paginate(6);
         return view('rooms.index', compact('rooms'));
     }
 

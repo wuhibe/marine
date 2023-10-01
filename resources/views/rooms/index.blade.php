@@ -38,8 +38,8 @@
                                     <th>Capacity</th>
                                     @if(auth('admin')->user()->user_type == 'admin')
                                     <th>Availability</th>
-                                    @endif
                                     <th style="min-width: 8rem;">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
 
@@ -85,13 +85,12 @@
                                                 method="get" id="availability-{{ $room->id }}">
                                             </form>
                                         </td>
-                                        @endif
                                         <td>
                                             <a class="btn btn-sm btn-primary"
-                                                href="{{ route('rooms.edit', [$room->id]) }}"
-                                                title="Edit Room"><i
+                                            href="{{ route('rooms.edit', [$room->id]) }}"
+                                            title="Edit Room"><i
                                                     class="fas fa-edit"></i>
-                                            </a>
+                                                </a>
                                             @if (auth('admin')->user()->user_type == 'admin')
                                                 <a class="btn btn-sm btn-danger" href="javascript:"
                                                     onclick="form_alert('room-{{ $room->id }}','Want to delete this room ?')"
@@ -99,11 +98,12 @@
                                                         class="fas fa-trash"></i>
                                                 </a>
                                                 <form action="{{ route('rooms.destroy', [$room->id]) }}"
-                                                    method="post" id="room-{{ $room->id }}">
-                                                    @csrf @method('delete')
-                                                </form>
+                                                method="post" id="room-{{ $room->id }}">
+                                                @csrf @method('delete')
+                                            </form>
                                             @endif
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
