@@ -72,12 +72,12 @@
                                     @endif
                                     @if (auth('admin')->user()->user_type == 'admin')
                                     <a class="btn btn-sm btn-danger" href="javascript:"
-                                        onclick="form_alert('reservation-{{ $reservation->id }}','Want to delete this reservation ?')"
-                                        title="Delete reservation"><i
+                                        onclick="form_alert('booking-{{ $booking->id }}','Want to delete this booking ?')"
+                                        title="Delete booking"><i
                                             class="fas fa-trash"></i>
                                     </a>
-                                    <form action="{{ route('reservations.destroy', [$reservation->id]) }}"
-                                    method="post" id="reservation-{{ $reservation->id }}">
+                                    <form action="{{ route('bookings.destroy', [$booking->id]) }}"
+                                    method="post" id="booking-{{ $booking->id }}">
                                     @csrf @method('delete')
                                 </form>
                                 @endif
