@@ -9,12 +9,13 @@
                 <div class="col-sm">
                     <h1 class="page-header-title"><i class="fas fa-list"></i> Rooms List </h1>
                 </div>
-
+                @if (auth('admin')->user()->user_type == 'admin')
                 <div class="col-sm-auto">
                     <a class="btn btn-primary" href="{{route('rooms.create')}}">
                         <i class="fas fa-plus"></i> Add Room
                     </a>
                 </div>
+                @endif
             </div>
         </div>
         <!-- End Page Header -->

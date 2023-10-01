@@ -36,7 +36,7 @@ class DashboardController extends Controller
 
     private function getRevenueForPeriod($start, $end)
     {
-        return Booking::whereBetween('created_at', [$start, $end])
+        return Booking::whereBetween('check_in_date', [$start, $end])
             ->sum('total_price');
     }
 
