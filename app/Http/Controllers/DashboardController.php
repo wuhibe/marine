@@ -40,7 +40,7 @@ class DashboardController extends Controller
 
     private function getRevenueByRoom($start, $end)
     {
-        return Booking::whereBetween('bookings.created_at', [$start, $end])
+        return Booking::whereBetween('bookings.check_in_date', [$start, $end])
             ->leftjoin('rooms', 'bookings.room_id', 'rooms.id')
             ->selectRaw('rooms.room_number, rooms.price_per_night, room_id, sum(total_price) as price')
             ->groupBy('rooms.id', 'bookings.room_id', 'rooms.room_number', 'rooms.price_per_night')

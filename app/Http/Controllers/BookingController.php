@@ -18,7 +18,8 @@ class BookingController extends Controller
 
     public function create()
     {
-        $rooms = Room::where('availability', 'AVAILABLE')->get();
+        $futureBookingRooms = Booking::where('check_out_date', '>=', now())->pluck('room_id');
+        $rooms = Room::where('availability', 'AVAILABLE')->whereNotIn('id', $futureBookingRooms)->get();
         $customers = Customer::all();
         return view('bookings.create', compact('rooms', 'customers'));
     }
