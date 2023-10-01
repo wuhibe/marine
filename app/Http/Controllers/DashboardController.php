@@ -43,7 +43,7 @@ class DashboardController extends Controller
         return Booking::whereBetween('bookings.created_at', [$start, $end])
             ->leftjoin('rooms', 'bookings.room_id', 'rooms.id')
             ->selectRaw('rooms.room_number, rooms.price_per_night, room_id, sum(total_price) as price')
-            ->groupBy('rooms.id', 'rooms.room.number')
+            ->groupBy('rooms.id', 'rooms.room_number')
             ->orderBy('price', 'desc')
             ->get()->toArray();
     }
