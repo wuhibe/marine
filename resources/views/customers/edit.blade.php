@@ -51,8 +51,8 @@
                                         <div class="d-flex flex-row">
                                             <input type="file" name="avatar_img" class="form-control-file">
                                             @if ($customer->avatar)
-                                                <a href="#" class="image-link" data-toggle="modal" data-target="#imageModal" data-image="{{ $customer->avatar }}">
-                                                    <img src="{{ ($customer->avatar) }}" alt="Avatar" class="avatar">
+                                                <a href="#" class="image-link" data-toggle="modal" data-target="#imageModal" data-image="{{ asset('storage/' . $customer->avatar) }}">
+                                                    <img src="{{ asset('storage/' . $customer->avatar) }}" alt="Avatar" class="avatar">
                                                 </a>
                                             @else
                                                 No Avatar
@@ -64,8 +64,8 @@
                                         <div class="d-flex flex-row">
                                             <input type="file" name="id_photo_img" class="form-control-file">
                                             @if ($customer->id_photo)
-                                                <a href="#" class="image-link" data-toggle="modal" data-target="#imageModal" data-image="{{ $customer->id_photo }}">
-                                                    <img src="{{ ($customer->id_photo) }}" alt="ID Photo" class="avatar">
+                                                <a href="#" class="image-link" data-toggle="modal" data-target="#imageModal" data-image="{{ asset('storage/' . $customer->id_photo) }}">
+                                                    <img src="{{ asset('storage/' . $customer->id_photo) }}" alt="ID Photo" class="avatar">
                                                 </a>
                                             @else
                                                 No ID Photo
