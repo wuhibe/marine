@@ -65,7 +65,6 @@ class ReservationController extends Controller
             'check_in_date' => 'required|date',
             'check_out_date' => 'required|date|after:check_in_date',
             'total_price' => 'required|numeric',
-            'payment_method' => 'required|string',
         ]);
 
         if ($validator->fails()) {

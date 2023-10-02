@@ -33,11 +33,11 @@
         </div>
         <div class="form-group">
             <label for="total_price">Total Price</label>
-            <input type="number" name="total_price" class="form-control" value="{{ $reservation->total_price }}">
+            <input type="number" name="total_price" class="form-control" value="{{ $reservation->total_price }}" readonly>
         </div>
         <div class="form-group">
-            <label for="payment_method">Payment Method</label>
-            <input type="text" name="payment_method" class="form-control" value="{{ $reservation->payment_method }}">
+            <label for="receptionist_name">Receptionist Name</label>
+            <input type="text" name="receptionist_name" class="form-control" value="{{ $reservation->receptionist_name }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Update Reservation</button>
     </form>

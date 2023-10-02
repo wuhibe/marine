@@ -33,13 +33,19 @@
                 <input type="date" name="check_out_date" class="form-control" min="{{ now()->addDay()->toDateString() }}" required>
             </div>
         </div>
-        <div class="form-group">
-            <label for="total_price">Total Price</label>
-            <input type="number" name="total_price" class="form-control" readonly>
+        <div class="row">
+            <div class="col-6">
+                <label for="total_price">Total Price</label>
+                <input type="number" name="total_price" class="form-control" readonly>
+            </div>
+            <div class="col-6">
+                <label for="payment_method">Payment Method</label>
+                <input type="text" name="payment_method" class="form-control" required>
+            </div>
         </div>
         <div class="form-group">
-            <label for="payment_method">Payment Method</label>
-            <input type="text" name="payment_method" class="form-control" required>
+            <label for="receptionist_name">Receptionist Name</label>
+            <input type="text" name="receptionist_name" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary">Create Booking</button>
     </form>

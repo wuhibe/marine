@@ -44,6 +44,7 @@
                                 <th>Check-in Date</th>
                                 <th>Check-out Date</th>
                                 <th>Total Price</th>
+                                <th>Receptionist</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -59,13 +60,14 @@
                                 <td>{{ $reservation->check_in_date }}</td>
                                 <td>{{ $reservation->check_out_date }}</td>
                                 <td>{{ $reservation->total_price }}</td>
+                                <td>{{ $reservation->receptionist_name ?? '-' }}</td>
                                 <td>
                                     <a
                                     href="{{ route('reservations.show', $reservation->id) }}"
                                     class="btn btn-warning btn-sm"
                                     ><i class="fas fa-eye"></i></a
                                     >
-                                    @if($reservation->status == 'PENDING' && $reservation->check_in_date > date('Y-m-d'))
+                                    @if(($reservation->status == 'PENDING' && $reservation->check_in_date > date('Y-m-d')) || auth('admin')->user()->user_type == 'admin')
                                     <a
                                         href="{{ route('reservations.edit', $reservation->id) }}"
                                         class="btn btn-primary btn-sm"

@@ -31,13 +31,19 @@
             <label for="check_out_date">Check-out Date</label>
             <input type="date" name="check_out_date" class="form-control" value="{{ $booking->check_out_date }}">
         </div>
-        <div class="form-group">
-            <label for="total_price">Total Price</label>
-            <input type="number" name="total_price" class="form-control" value="{{ $booking->total_price }}">
+        <div class="row">
+            <div class="col-6">
+                <label for="total_price">Total Price</label>
+                <input type="number" name="total_price" class="form-control" value="{{ $booking->total_price }}" readonly>
+            </div>
+            <div class="col-6">
+                <label for="payment_method">Payment Method</label>
+                <input type="text" name="payment_method" class="form-control" value="{{ $booking->payment_method }}" required>
+            </div>
         </div>
         <div class="form-group">
-            <label for="payment_method">Payment Method</label>
-            <input type="text" name="payment_method" class="form-control" value="{{ $booking->payment_method }}" required>
+            <label for="receptionist_name">Receptionist Name</label>
+            <input type="text" name="receptionist_name" class="form-control" value="{{ $booking->receptionist_name }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Update Booking</button>
     </form>

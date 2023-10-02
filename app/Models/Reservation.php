@@ -18,6 +18,7 @@ class Reservation extends Model
         'total_price',
         'payment_method',
         'user_id',
+        'receptionist_name',
     ];
 
     public function room()

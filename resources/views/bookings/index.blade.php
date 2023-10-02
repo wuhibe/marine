@@ -45,6 +45,7 @@
                                 <th>Check-out Date</th>
                                 <th>Total Price</th>
                                 <th>Payment Method</th>
+                                <th>Receptionist</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -61,11 +62,12 @@
                                 <td>{{ $booking->check_out_date }}</td>
                                 <td>{{ $booking->total_price }}</td>
                                 <td>{{ $booking->payment_method }}</td>
+                                <td>{{ $booking->receptionist_name ?? '-' }}</td>
                                 <td>
                                     <a
                                     href="{{ route('bookings.show', $booking->id) }}"
                                     class="btn btn-warning btn-sm" title="View Booking"><i class="fas fa-eye"></i></a>
-                                    @if ($booking->check_in_date >= now()->toDateString())
+                                    @if ($booking->check_in_date >= now()->toDateString() || auth('admin')->user()->user_type == 'admin')
                                     <a
                                         href="{{ route('bookings.edit', $booking->id) }}"
                                         class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
