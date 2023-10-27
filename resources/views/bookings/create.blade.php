@@ -26,11 +26,11 @@
         <div class="form-group row">
             <div class="col-6">
                 <label for="check_in_date">Check-in Date</label>
-                <input type="date" name="check_in_date" class="form-control" min="{{ now()->toDateString() }}" required>
+                <input type="date" name="check_in_date" class="form-control" required>
             </div>
             <div class="col-6">
                 <label for="check_out_date">Check-out Date</label>
-                <input type="date" name="check_out_date" class="form-control" min="{{ now()->addDay()->toDateString() }}" required>
+                <input type="date" name="check_out_date" class="form-control" required>
             </div>
         </div>
         <div class="row">
