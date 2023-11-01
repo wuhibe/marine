@@ -55,8 +55,12 @@
                                 <td>{{ $booking->id }}</td>
                                 <td>{{ $booking->room->room_number }}</td>
                                 <td>
-                                    {{ $booking->customer->first_name }}
-                                    {{ $booking->customer->last_name }}
+                                    <b>
+                                    <a href="{{ route('customers.show', $booking->customer->id) }}">
+                                        {{ $booking->customer->first_name }}
+                                        {{ $booking->customer->last_name }}
+                                    </a>
+                                    </b>
                                 </td>
                                 <td>{{ $booking->check_in_date }}</td>
                                 <td>{{ $booking->check_out_date }}</td>

@@ -12,8 +12,9 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::orderBy('id', 'desc')
-        ->paginate(6);
+        $bk_ids = \DB::select("select MAX(id) as recent_booking_id FROM bookings group by customer_id");
+        $bookings = Booking::whereIn('id', array_column($bk_ids, 'recent_booking_id'))
+            ->orderBy('id', 'desc')->paginate(6);
         return view('bookings.index', compact('bookings'));
     }
 

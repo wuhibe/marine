@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Customer;
 use App\Models\Utility;
 use Illuminate\Http\Request;
@@ -68,7 +69,8 @@ class CustomerController extends Controller
 
     public function show(Customer $customer)
     {
-        return view('customers.show', compact('customer'));
+        $bookings = Booking::where('customer_id', $customer->id)->get();
+        return view('customers.show', compact('customer', 'bookings'));
     }
 
     public function edit(Customer $customer)
